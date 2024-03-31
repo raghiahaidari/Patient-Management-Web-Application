@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Date;
 
@@ -19,8 +22,16 @@ public class SpringMvcSpringDataJpaThymeleafApplication implements CommandLineRu
 
     @Override
     public void run(String... args) throws Exception {
-        patientRepository.save(new Patient(null, "Mohamed", new Date(), false, 23));
-        patientRepository.save(new Patient(null, "Ahmed", new Date(), true, 63));
-        patientRepository.save(new Patient(null, "Laila", new Date(), false, 13));
+        /*patientRepository.save(new Patient(null, "Mohamed", new Date(), false, 123));
+        patientRepository.save(new Patient(null, "Ahmed", new Date(), true, 163));
+//        patientRepository.save(new Patient(null, "Laila", new Date(), false, 113));
+
+         */
+        patientRepository.findAll();
+    }
+
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }
