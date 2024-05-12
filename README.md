@@ -3,6 +3,7 @@
 ## Introduction
 This repository contains the source code for a Java EE web application built using Spring MVC, Thymeleaf, and Spring Data JPA. The purpose of this application is to manage patients' records efficiently. The application offers various functionalities to handle patient data effectively.
 
+![Project image](src/main/resources/img.png)
 ## Features 🚀
 The application offers the following features :
 
