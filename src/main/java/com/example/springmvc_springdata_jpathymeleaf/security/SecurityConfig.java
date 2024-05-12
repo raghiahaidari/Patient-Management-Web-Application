@@ -14,8 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+
     @Bean
     public InMemoryUserDetailsManager inMemoryUserDetailsManager(PasswordEncoder passwordEncoder){
         String encodedPassword = passwordEncoder.encode("1234");
@@ -26,7 +25,6 @@ public class SecurityConfig {
                 User.withUsername("admin").password(encodedPassword).roles("USER","ADMIN").build()
         );
     }
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity

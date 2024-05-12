@@ -34,9 +34,7 @@ public class PatientController {
     }
 
     @GetMapping("/admin/delete")
-    public String delete(@RequestParam(name = "id") Long id,
-                         @RequestParam(name = "keyword", defaultValue = "") String keyword,
-                         @RequestParam(name = "page", defaultValue = "0") int page) {
+    public String delete(@RequestParam(name = "id") Long id, String keyword,int page) {
         patientRepository.deleteById(id);
         return "redirect:/user/index?page="+page+"&keyword="+keyword;
     }
@@ -50,7 +48,7 @@ public class PatientController {
         return patientRepository.findAll();
     }
 
-    @GetMapping("/user/formPatients")
+    @GetMapping("/admin/formPatients")
     public String formPatients(Model model) {
         model.addAttribute("patient", new Patient());
         return "formPatients" ;
